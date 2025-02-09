@@ -48,10 +48,10 @@ test("blog identifier is named id instead of _id", async () => {
   expect(response.body[0].id).toBeDefined();
 });
 
-test("a valid blog can be added", async () => {
+test("a valid blog can be added via", async () => {
   const newBlog = {
-    title: "New Blog Post",
-    author: "Test Author",
+    title: "Testing -Tryout 1",
+    author: "Test Deniz",
     url: "http://example.com/new",
     likes: 7,
   };
@@ -66,7 +66,7 @@ test("a valid blog can be added", async () => {
   expect(response.body).toHaveLength(initialBlogs.length + 1);
 });
 
-test("if likes property is missing, it defaults to 0", async () => {
+test("if likes is missing, it correctly defaults to 0", async () => {
   const newBlog = {
     title: "Blog Without Likes",
     author: "No Likes Author",
@@ -82,9 +82,9 @@ test("if likes property is missing, it defaults to 0", async () => {
   expect(response.body.likes).toBe(0);
 });
 
-test("a blog without title and url is not added", async () => {
+test("a blog without Name title and URL  is not added", async () => {
   const newBlog = {
-    author: "Anonymous",
+    author: "No Name Author",
     likes: 3,
   };
 
@@ -94,7 +94,6 @@ test("a blog without title and url is not added", async () => {
   expect(response.body).toHaveLength(initialBlogs.length);
 });
 
-// ✅ Fix 3: Close MongoDB properly after tests
 afterAll(async () => {
   await mongoose.connection.close();
 });
